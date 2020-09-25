@@ -1,8 +1,10 @@
 <h2>Our Goods:</h2>
 <ul class="items">
-  <li *ngFor="let item of items">
-    <ul class="SnusInfo">
-      <li class="SnusName"><strong>{{item.name}}</strong></li>
+  <li *ngFor="let item of items"
+      (click)="onSelect(item)">
+
+    <ul class="SnusInfo" [class.selected]="item === selectedItem">
+      <li class="SnusName" [class.selected]="item === selectedItem"><strong>{{item.name}}</strong></li>
       <li><img class="SnusImage" src="{{item.url}}" alt="{{item.name}}"></li>
       <li><span>Strength: </span>{{item.strength}}</li>
       <li><span>Rating: </span>{{item.rating}}</li>
@@ -12,3 +14,9 @@
     </ul>
   </li>
 </ul>
+
+<div *ngIf="selectedItem">
+  <h2>Selected Snus: </h2>
+  <div class="SelectedSnusName">{{selectedItem.name}}</div>
+  <img class="SelectedSnusImage" src="{{selectedItem.url}}" alt="{{selectedItem.name}}">
+</div>

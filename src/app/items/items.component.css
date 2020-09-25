@@ -24,3 +24,18 @@
   color: black;
   font-family: Helvetica, sans-serif;
 }
+
+.SelectedSnusName {
+  color: black;
+  font-family: Helvetica, sans-serif;
+  font-size: 200%;
+}
+
+.SelectedSnusImage {
+  width: 200px;
+  height: 200px;
+}
+
+.items ul.selected{
+  background: cadetblue;
+}
