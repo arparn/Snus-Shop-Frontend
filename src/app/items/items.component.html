@@ -1,1 +1,14 @@
-<p>items works!</p>
+
+<div class="item">
+  <h2>{{item.name | uppercase}}</h2>
+  <div><img class="OdensImage" src="{{item.url}}" alt="{{item.name}}"></div>
+  <div>
+    <ul class="OdensInfo">
+      <li><span>Strength: </span>{{item.strength}}</li>
+      <li><span>Rating: </span>{{item.rating}}</li>
+      <li><span>Price: </span>{{item.price}}</li>
+      <li><span>ID: </span>{{item.id}}</li>
+      <li>{{item.description}}</li>
+    </ul>
+  </div>
+</div>
