@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ITEMS} from "./items-mock";
 import {Item} from "./item";
 
 @Component({
@@ -8,15 +9,12 @@ import {Item} from "./item";
 })
 export class ItemsComponent implements OnInit {
 
-  item: Item = {
-    url: "/assets/images/odens.png",
-    name: "Oden's",
-    strength: 5,
-    rating: 4,
-    price: 5.60,
-    id: 1,
-    description: "Good Snus"
-  };
+  items = ITEMS;
+  selectedItem: Item;
+
+  onSelect (item: Item):void {
+    this.selectedItem = item;
+  }
 
   constructor() { }
 
