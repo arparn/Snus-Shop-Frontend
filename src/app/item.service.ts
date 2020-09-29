@@ -10,9 +10,15 @@ import {MessageService} from "./message.service";
 export class ItemService {
 
   getItems(): Observable<Item[]> {
-    // TODO: send the message _after_ fetching the items
-    this.messageService.add('ItemService: fetched items');
+    // TODO: send the message _after_ fetching the heroes
+    this.messageService.add('ItemService: fetched Items');
     return of(ITEMS);
+  }
+
+  getItem(id: number): Observable<Item> {
+    // TODO: send the message _after_ fetching the items
+    this.messageService.add(`ItemService: fetched item id=${id}`);
+    return of(ITEMS.find(item => item.id === id));
   }
 
   constructor(private messageService: MessageService) { }

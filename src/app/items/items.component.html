@@ -1,18 +1,16 @@
 <h2>Our Goods:</h2>
 <ul class="items">
-  <li *ngFor="let item of items"
-      (click)="onSelect(item)">
-
-    <ul class="SnusInfo" [class.selected]="item === selectedItem">
-      <li class="SnusName"><strong>{{item.name}}</strong></li>
-      <li><img class="SnusImage" src="{{item.url}}" alt="{{item.name}}"></li>
-      <li><span>Strength: </span>{{item.strength}}</li>
-      <li><span>Rating: </span>{{item.rating}}</li>
-      <li><span>Price: </span>{{item.price}}</li>
-      <li><span>ID: </span>{{item.id}}</li>
-      <li>{{item.description}}</li>
-    </ul>
+  <li *ngFor="let item of items">
+    <a routerLink="/detail/{{item.id}}">
+      <ul class="SnusInfo">
+        <li class="SnusName"><strong>{{item.name}}</strong></li>
+        <li><img class="SnusImage" src="{{item.url}}" alt="{{item.name}}"></li>
+        <li><span>Strength: </span>{{item.strength}}</li>
+        <li><span>Rating: </span>{{item.rating}}</li>
+        <li><span>Price: </span>{{item.price}}</li>
+        <li><span>ID: </span>{{item.id}}</li>
+        <li>{{item.description}}</li>
+      </ul>
+    </a>
   </li>
 </ul>
-
-<app-item-details [item] = "selectedItem"></app-item-details>
