@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Item } from "./items/item";
 import { Observable, of } from 'rxjs';
 import {MessageService} from "./message.service";
-import { HttpClient, } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -16,7 +16,6 @@ export class ItemService {
                private messageService: MessageService) { }
 
   getItems(): Observable<Item[]> {
-    this.messageService.add('ItemService: fetched Items');
     return this.http.get<Item[]>(this.itemsUrl)
       .pipe(
         tap(_ => this.log('fetched items')),
