@@ -2,8 +2,16 @@
 <h3>Top Snus</h3>
 <div class="grid grid-pad">
   <a *ngFor="let item of items" class="col-1-4" routerLink="/detail/{{item.id}}">
-    <div class="module item">
-      <h4>{{item.name}}</h4>
+    <div class="module item" >
+      <ul class="SnusInfo">
+        <li class="SnusName"><strong>{{item.name}}</strong></li>
+        <li><img class="SnusImage" src="{{item.url}}" alt="{{item.name}}"></li>
+        <li><span>Strength: </span>{{item.strength}}</li>
+        <li><span>Rating: </span>{{item.rating}}</li>
+        <li><span>Price: </span>{{item.price}}</li>
+        <li><span>ID: </span>{{item.id}}</li>
+        <li>{{item.description}}</li>
+      </ul>
     </div>
   </a>
 </div>

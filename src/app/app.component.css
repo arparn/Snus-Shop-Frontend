@@ -1,8 +1,8 @@
 /* Application-wide Styles */
 h1 {
-  color: black;
+  color: whitesmoke;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+  font-size: 150%;
 }
 h2, h3 {
   color: #444;
@@ -21,21 +21,33 @@ body, input[type="text"], button {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
-}
+
 nav a:visited, a:link {
-  color: #334953;
+  color: whitesmoke;
 }
+
 nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
+  color: yellow;
 }
+
 nav a.active {
-  color: #039be5;
+  color: yellow;
+}
+
+div.links {
+  float: right;
+  text-decoration: none;
+}
+
+div.header {
+  top: 0;
+  width: 100%;
+  margin: 0;
+  height: 10%;
+  position: fixed;
+  overflow: auto;
+  background-color: black;
+  display: inline-block;
+  left: 0;
+  border-radius: 8px;
 }

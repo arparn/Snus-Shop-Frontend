@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../item.service';
-import {Item} from "../items/item";
+import {Item} from '../items/item';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private itemService: ItemService) { }
 
+  // tslint:disable-next-line:typedef
   ngOnInit() {
     this.getItems();
   }
