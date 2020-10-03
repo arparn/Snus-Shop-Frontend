@@ -28,6 +28,9 @@ h4 {
 .col-1-4 {
   width: 25%;
 }
+.SnusInfo {
+  list-style-type: none;
+}
 .module {
   -moz-box-shadow:0 0 20px #555;
   padding: 20px;
@@ -41,8 +44,8 @@ h4 {
   box-shadow:0 0 20px #555;
 }
 .SnusImage {
-  width: 200px;
-  height: 200px;
+  width: 50%;
+  height: 50%;
 }
 .module:hover {
   background-color: #eee;
@@ -65,6 +68,6 @@ h4 {
     margin: 0;
   }
   .module {
-    min-width: 60px;
+    min-width: 120px;
   }
 }
