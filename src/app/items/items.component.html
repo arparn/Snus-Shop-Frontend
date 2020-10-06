@@ -1,7 +1,28 @@
-<br>
-<br>
-<br>
-<br>
+<app-item-search></app-item-search>
+  <p>Sort by:</p>
+  <form [formGroup]="filterForm">
+    <label>
+      <input type="radio" value="allSnus" formControlName="snusFilter">
+    </label>All snus<br>
+    <label>
+      <input type="radio" value="topSell" formControlName="snusFilter">
+    </label>Top sells<br>
+    <label>
+      <input type="radio" value="maxStre" formControlName="snusFilter">
+    </label>Max strength<br>
+    <label>
+      <input type="radio" value="minStre" formControlName="snusFilter">
+    </label>Min strength<br>
+    <label>
+      <input type="radio" value="maxPric" formControlName="snusFilter">
+    </label>Most expensive first<br>
+    <label>
+      <input type="radio" value="minPric" formControlName="snusFilter">
+    </label>Less expensive first<br>
+  </form>
+<button type="submit" (click)="filter(filterForm.value)">Filter</button>
+
+
 <h2>Our Goods:</h2>
 <ul class="items">
   <li *ngFor="let item of items">

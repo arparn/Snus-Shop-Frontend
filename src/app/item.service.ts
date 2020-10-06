@@ -32,17 +32,57 @@ export class ItemService {
       );
   }
 
-  /** GET items whose name contains search term */
+  /* GET items whose name contains search term */
   searchItems(term: string): Observable<Item[]> {
     if (!term.trim()) {
       return of([]);  // if not search term, return empty item array.
     }
-    return this.http.get<Item[]>(`${this.itemsUrl}/?name=${term}`)
+    return this.http.get<Item[]>(`${this.itemsUrl}/?query=${term}`)
       .pipe(
         tap(x => x.length ?
           this.log(`found items matching "${term}"`) :
           this.log(`no items matching "${term}"`)),
         catchError(this.handleError<Item[]>('searchItems', []))
+      );
+  }
+
+  getByRatingMax(): Observable<Item[]> {
+    return this.http.get<Item[]>(`${this.itemsUrl}/ratingMax`)
+      .pipe(
+        tap(_ => this.log('filtered items')),
+        catchError(this.handleError<Item[]>('getByRatingMax', []))
+      );
+  }
+
+  getByStrengthMax(): Observable<Item[]> {
+    return this.http.get<Item[]>(`${this.itemsUrl}/strengthMax`)
+      .pipe(
+        tap(_ => this.log('fetched items')),
+        catchError(this.handleError<Item[]>('getItems', []))
+      );
+  }
+
+  getByStrengthMin(): Observable<Item[]> {
+    return this.http.get<Item[]>(`${this.itemsUrl}/strengthMin`)
+      .pipe(
+        tap(_ => this.log('fetched items')),
+        catchError(this.handleError<Item[]>('getItems', []))
+      );
+  }
+
+  getByPriceMax(): Observable<Item[]> {
+    return this.http.get<Item[]>(`${this.itemsUrl}/priceMax`)
+      .pipe(
+        tap(_ => this.log('fetched items')),
+        catchError(this.handleError<Item[]>('getItems', []))
+      );
+  }
+
+  getByPriceMin(): Observable<Item[]> {
+    return this.http.get<Item[]>(`${this.itemsUrl}/priceMin`)
+      .pipe(
+        tap(_ => this.log('fetched items')),
+        catchError(this.handleError<Item[]>('getItems', []))
       );
   }
 

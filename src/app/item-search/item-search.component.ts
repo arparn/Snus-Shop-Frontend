@@ -7,7 +7,7 @@ import {
 } from 'rxjs/operators';
 
 import { Item } from "../items/item";
-import { ItemService} from "../item.service";
+import { ItemService } from "../item.service";
 
 @Component({
   selector: 'app-item-search',
