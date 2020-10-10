@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Item } from "./items/item";
+import { Comment } from "./comments/comment";
 import { Observable, of } from 'rxjs';
 import {MessageService} from "./message.service";
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -11,6 +12,10 @@ import { catchError, tap } from 'rxjs/operators';
 export class ItemService {
 
   private itemsUrl = 'api/items';  // URL to web api
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor( private http: HttpClient,
                private messageService: MessageService) { }
@@ -45,6 +50,8 @@ export class ItemService {
         catchError(this.handleError<Item[]>('searchItems', []))
       );
   }
+
+/**--SORTING--*/
 
   getByRatingMax(): Observable<Item[]> {
     return this.http.get<Item[]>(`${this.itemsUrl}/ratingMax`)
@@ -85,6 +92,25 @@ export class ItemService {
         catchError(this.handleError<Item[]>('getItems', []))
       );
   }
+
+/**--SORTING--*/
+
+/**--GET COMMENTS LIST--*/
+
+  getComments(id: number): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.itemsUrl}/${(id)}/comments`);
+  }
+
+/**--GET COMMENTS LIST--*/
+
+/**--ADD COMMENT--*/
+
+  addComment(comment: Comment, id: number): Observable<Comment> {
+  const url = `${this.itemsUrl}/${id}`;
+  return this.http.post<Comment>(url, comment, this.httpOptions);
+  }
+
+/**--ADD COMMENT--*/
 
   /**
    * Handle Http operation that failed.
