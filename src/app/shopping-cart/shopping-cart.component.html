@@ -1,0 +1,18 @@
+<h2>My Cart:</h2>
+<ul class="items">
+
+  <li *ngFor="let itemCount of itemsToBuy">
+    <a routerLink="/detail/{{itemCount.item.id}}">
+      <ul class="SnusInfo">
+        <li class="SnusName"><strong>{{itemCount.item.name}}</strong></li>
+        <li><img class="SnusImage" src="{{itemCount.item.url}}" alt="{{itemCount.item.name}}"></li>
+        <li><span>Strength: </span>{{itemCount.item.strength}}</li>
+        <li><span>Rating: </span>{{itemCount.item.rating}}</li>
+        <li><span>Price: </span>{{itemCount.item.price}}</li>
+        <li><span>ID: </span>{{itemCount.item.id}}</li>
+        <li><span>Amount: </span>{{itemCount.quantity}}</li>
+        <li>{{itemCount.item.description}}</li>
+      </ul>
+    </a>
+  </li>
+</ul>

@@ -30,4 +30,8 @@ export class ItemDetailsComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  addToShoppingCart(): void {
+    this.itemService.addToShoppingCart(this.item);
+  }
 }

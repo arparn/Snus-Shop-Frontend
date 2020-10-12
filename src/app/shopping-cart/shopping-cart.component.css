@@ -1,0 +1,27 @@
+.items {
+  list-style-type: none;
+}
+
+.SnusName {
+  color: black;
+  font-family: Helvetica, sans-serif;
+  font-size: 200%;
+}
+
+.SnusImage {
+  width: 200px;
+  height: 200px;
+}
+
+.SnusInfo {
+  float: left;
+  margin: 4px;
+  padding: 0;
+  border: black solid 2px;
+  width: 200px;
+  background: darkgrey;
+  list-style-type: none;
+  color: black;
+  font-family: Helvetica, sans-serif;
+}
+

@@ -14,6 +14,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { ItemSearchComponent } from './item-search/item-search.component';
 import { CommentsComponent } from './comments/comments.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     DashboardComponent,
     ItemSearchComponent,
     CommentsComponent,
-    WishlistComponent
+    WishlistComponent,
+    ShoppingCartComponent
   ],
   imports: [
     FormsModule,
