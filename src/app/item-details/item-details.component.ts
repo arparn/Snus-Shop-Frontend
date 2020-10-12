@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Item } from "../items/item";
+import { Item } from '../items/item';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { ItemService} from "../item.service";
+import { ItemService} from '../item.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-item-details',
@@ -15,7 +16,8 @@ export class ItemDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private itemService: ItemService,
-              private location: Location) { }
+              private location: Location,
+              private userService: UserService) { }
 
   ngOnInit(): void {
     this.getItem();
@@ -32,6 +34,7 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   addToShoppingCart(): void {
-    this.itemService.addToShoppingCart(this.item);
+    this.itemService.addToShoppingCart(this.item.id)
+      .subscribe(item => this.item = item);
   }
 }

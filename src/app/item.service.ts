@@ -106,6 +106,10 @@ export class ItemService {
 /**--GET COMMENTS LIST--*/
 
 /**--ADD COMMENT--*/
+  addToShoppingCart(id: number): Observable<Item> {
+    const userUrl = 'api/user';
+    return this.http.post<Item>(userUrl, id, this.httpOptions);
+  }
 
   addComment(comment: Comment, id: number): Observable<Comment> {
   const url = `${this.itemsUrl}/${id}`;
@@ -114,10 +118,6 @@ export class ItemService {
 
 /**--ADD COMMENT--*/
 
-  addToShoppingCart(item: Item): void {
-    const url = `api/user`;
-    this.http.post<Item>(url, item, this.httpOptions);
-  }
 
   /**
    * Handle Http operation that failed.

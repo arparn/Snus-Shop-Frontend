@@ -1,6 +1,6 @@
-import {Item} from "../items/item";
+import {Item} from '../items/item';
 
 export interface ItemCount {
-  item: Item,
-  quantity: number
+  item: Item;
+  quantity: number;
 }
