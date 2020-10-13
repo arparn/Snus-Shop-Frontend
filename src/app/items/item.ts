@@ -1,9 +1,10 @@
 export interface Item {
-  url: string;
-  name: string;
-  strength: number;
-  rating: number;
-  price: number;
   id: number;
+  name: string;
+  url: string;
+  price: number;
   description: string;
+  rating: number;
+  strength: number;
+  comments: Comment[];
 }

@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import {MessageService} from "./message.service";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
+import {ItemCount} from "./shopping-cart/item-count";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import { catchError, tap } from 'rxjs/operators';
 export class ItemService {
 
   private itemsUrl = 'api/items';  // URL to web api
+
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -104,6 +106,10 @@ export class ItemService {
 /**--GET COMMENTS LIST--*/
 
 /**--ADD COMMENT--*/
+  addToShoppingCart(id: number): Observable<Item> {
+    const userUrl = 'api/user';
+    return this.http.post<Item>(userUrl, id, this.httpOptions);
+  }
 
   addComment(comment: Comment, id: number): Observable<Comment> {
   const url = `${this.itemsUrl}/${id}`;
@@ -111,6 +117,7 @@ export class ItemService {
   }
 
 /**--ADD COMMENT--*/
+
 
   /**
    * Handle Http operation that failed.

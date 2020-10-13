@@ -28,10 +28,11 @@ export class CommentsComponent implements OnInit {
     firstName = firstName.trim();
     lastName = lastName.trim();
     comment = comment.trim();
-    if(!firstName && !lastName && !comment) {return;}
-    let time = new Date();
+    if (!firstName && !lastName && !comment) {return; }
+    const time = new Date();
     const id = +this.route.snapshot.paramMap.get('id');
     this.itemService.addComment({firstName, lastName, comment, time} as Comment, id)
+      // tslint:disable-next-line:no-shadowed-variable
       .subscribe(comment => {
         this.comments.push(comment);
       });

@@ -13,6 +13,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { ItemSearchComponent } from './item-search/item-search.component';
 import { CommentsComponent } from './comments/comments.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { CommentsComponent } from './comments/comments.component';
     MessagesComponent,
     DashboardComponent,
     ItemSearchComponent,
-    CommentsComponent
+    CommentsComponent,
+    WishlistComponent,
+    ShoppingCartComponent
   ],
   imports: [
     FormsModule,
