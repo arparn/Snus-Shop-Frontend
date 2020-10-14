@@ -1,19 +1,19 @@
-.items {
+.itemss {
   list-style-type: none;
 }
 
-.SnusName {
+.SnusNamee {
   color: black;
   font-family: Helvetica, sans-serif;
   font-size: 200%;
 }
 
-.SnusImage {
+.SnusImagee {
   width: 200px;
   height: 200px;
 }
 
-.SnusInfo {
+.SnusInfoo {
   float: left;
   margin: 4px;
   padding: 0;
@@ -24,4 +24,13 @@
   color: black;
   font-family: Helvetica, sans-serif;
 }
+
+
+.shopping-cart-item-button {
+  align-self: flex-start;
+  width: 200px;
+  height: 20px;
+}
+
+
 

@@ -3,7 +3,6 @@ import { Item } from '../items/item';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ItemService} from '../item.service';
-import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-item-details',
@@ -18,8 +17,7 @@ export class ItemDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private itemService: ItemService,
-              private location: Location,
-              private userService: UserService) { }
+              private location: Location) { }
 
   ngOnInit(): void {
     this.getItem();
