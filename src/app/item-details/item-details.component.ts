@@ -38,7 +38,7 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   addToShoppingCart(): void {
-    this.itemService.addToShoppingCart(this.item.id)
+    this.userService.addToShoppingCart(this.item.id)
       .subscribe(item => this.item = item);
   }
 
