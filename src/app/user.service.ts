@@ -16,4 +16,8 @@ export class UserService {
   getShoppingCart(): Observable<ItemCount[]> {
     return this.http.get<ItemCount[]>(`${this.userUrl}/shopping-cart`);
   }
+
+  getWishlist(): Observable<Item[]> {
+        return this.http.get<Item[]>(`${this.userUrl}/getWishlist`);
+    }
 }

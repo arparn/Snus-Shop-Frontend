@@ -37,4 +37,9 @@ export class ItemDetailsComponent implements OnInit {
     this.itemService.addToShoppingCart(this.item.id)
       .subscribe(item => this.item = item);
   }
+
+  addToWishlist(): void {
+    this.itemService.addToWishlist(this.item.id)
+          .subscribe(item => this.item = item);
+  }
 }
