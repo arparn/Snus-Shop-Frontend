@@ -111,11 +111,6 @@ export class ItemService {
     return this.http.post<Item>(userUrl, id, this.httpOptions);
   }
 
-  addToWishlist(id: number): Observable<Item> {
-      const userUrl = 'api/user/wishlist';
-      return this.http.post<Item>(userUrl, id, this.httpOptions);
-  }
-
   addComment(comment: Comment, id: number): Observable<Comment> {
   const url = `${this.itemsUrl}/${id}`;
   return this.http.post<Comment>(url, comment, this.httpOptions);

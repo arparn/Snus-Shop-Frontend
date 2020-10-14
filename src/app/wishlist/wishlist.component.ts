@@ -23,7 +23,9 @@ export class WishlistComponent implements OnInit {
   }
 
   remove(item: Item): void {
-    this.itemService.addToWishlist(item.id).subscribe(item => item = item);
+    this.userService.addToWishlist(item.id).subscribe(item => item = item);
     this.getWishlist();
   }
+
+
 }

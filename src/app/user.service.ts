@@ -17,6 +17,11 @@ export class UserService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+  addToWishlist(id: number): Observable<Item> {
+        const userUrl = 'api/user/wishlist';
+        return this.http.post<Item>(userUrl, id, this.httpOptions);
+    }
+
   getShoppingCart(): Observable<ItemCount[]> {
     return this.http.get<ItemCount[]>(`${this.userUrl}/shopping-cart`);
   }
