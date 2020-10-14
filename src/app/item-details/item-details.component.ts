@@ -13,6 +13,8 @@ import { UserService } from '../user.service';
 export class ItemDetailsComponent implements OnInit {
 
   item: Item;
+  action: string = '';
+  actionChanged: boolean = false;
 
   constructor(private route: ActivatedRoute,
               private itemService: ItemService,
@@ -21,6 +23,7 @@ export class ItemDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getItem();
+    this.action = 'Add to';
   }
 
   getItem(): void {
@@ -39,6 +42,15 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   addToWishlist(): void {
+    if (this.actionChanged){
+      this.action = 'Add to';
+      this.actionChanged = false;
+    }
+    else
+    {
+      this.action = 'Remove from';
+      this.actionChanged = true;
+    }
     this.itemService.addToWishlist(this.item.id)
           .subscribe(item => this.item = item);
   }
