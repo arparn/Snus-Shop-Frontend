@@ -106,11 +106,6 @@ export class ItemService {
 /**--GET COMMENTS LIST--*/
 
 /**--ADD COMMENT--*/
-  addToShoppingCart(id: number): Observable<Item> {
-    const userUrl = 'api/user';
-    return this.http.post<Item>(userUrl, id, this.httpOptions);
-  }
-
   addComment(comment: Comment, id: number): Observable<Comment> {
   const url = `${this.itemsUrl}/${id}`;
   return this.http.post<Comment>(url, comment, this.httpOptions);

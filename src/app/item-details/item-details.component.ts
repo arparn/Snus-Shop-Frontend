@@ -3,6 +3,8 @@ import { Item } from '../items/item';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ItemService} from '../item.service';
+import {UserService} from '../user.service';
+
 
 @Component({
   selector: 'app-item-details',
@@ -12,13 +14,17 @@ import { ItemService} from '../item.service';
 export class ItemDetailsComponent implements OnInit {
 
   item: Item;
+  action: string = '';
+  actionChanged: boolean = false;
 
   constructor(private route: ActivatedRoute,
               private itemService: ItemService,
-              private location: Location) { }
+              private location: Location,
+              private userService: UserService) { }
 
   ngOnInit(): void {
     this.getItem();
+    this.action = 'Add to';
   }
 
   getItem(): void {
@@ -32,7 +38,21 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   addToShoppingCart(): void {
-    this.itemService.addToShoppingCart(this.item.id)
+    this.userService.addToShoppingCart(this.item.id)
       .subscribe(item => this.item = item);
+  }
+
+  addToWishlist(): void {
+    if (this.actionChanged){
+      this.action = 'Add to';
+      this.actionChanged = false;
+    }
+    else
+    {
+      this.action = 'Remove from';
+      this.actionChanged = true;
+    }
+    this.userService.addToWishlist(this.item.id)
+          .subscribe(item => this.item = item);
   }
 }
