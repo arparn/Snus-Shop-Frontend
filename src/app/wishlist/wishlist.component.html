@@ -11,11 +11,10 @@
           <li><span>Rating: </span>{{item.rating}}</li>
           <li><span>Price: </span>{{item.price}}</li>
           <li><span>ID: </span>{{item.id}}</li>
-          <li><span>Amount: </span>{{quantity}}</li>
           <li>{{item.description}}</li>
         </ul>
       </a>
-      <button class="wishlist-item-button" (click)="remove(item)">Remove</button>
+      <button class="wishlist-item-button" (click)="remove(item, item.id)">Remove</button>
     </div>
   </li>
 </ul>

@@ -46,13 +46,14 @@ export class ItemDetailsComponent implements OnInit {
     if (this.actionChanged){
       this.action = 'Add to';
       this.actionChanged = false;
+      this.userService.deleteFromWishList(this.item.id).subscribe();
     }
     else
     {
       this.action = 'Remove from';
       this.actionChanged = true;
+      this.userService.addToWishlist(this.item.id)
+        .subscribe(item => this.item = item);
     }
-    this.userService.addToWishlist(this.item.id)
-          .subscribe(item => this.item = item);
   }
 }

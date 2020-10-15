@@ -18,13 +18,12 @@ export class UserService {
   };
 
   addToWishlist(id: number): Observable<Item> {
-        const userUrl = 'api/user/wishlist';
-        return this.http.post<Item>(userUrl, id, this.httpOptions);
+        return this.http.post<Item>(`${this.userUrl}/wishList`, id, this.httpOptions);
   }
 
   addToShoppingCart(id: number): Observable<Item> {
-      const userUrl = 'api/user/shopping-cart';
-      return this.http.post<Item>(userUrl, id, this.httpOptions);
+      const url = 'api/user/shopping-cart';
+      return this.http.post<Item>(url, id, this.httpOptions);
   }
 
   getShoppingCart(): Observable<ItemCount[]> {
@@ -32,12 +31,17 @@ export class UserService {
   }
 
   getWishlist(): Observable<Item[]> {
-          return this.http.get<Item[]>(`${this.userUrl}/getWishlist`);
+    return this.http.get<Item[]>(this.userUrl);
   }
 
   deleteItemCount(itemCount: ItemCount | number): Observable<ItemCount[]> {
     const id = typeof itemCount === 'number' ? itemCount : itemCount.item.id;
     const url = `${this.userUrl}/${id}`;
     return this.http.delete<ItemCount[]>(url, this.httpOptions);
+  }
+
+  deleteFromWishList(id: number): Observable<Item[]> {
+    const url = `${this.userUrl}/${id}/deleteWish`;
+    return this.http.delete<Item[]>(url, this.httpOptions);
   }
 }

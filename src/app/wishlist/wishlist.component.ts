@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
 import { Item } from '../items/item';
-import { ItemService} from '../item.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -10,7 +9,7 @@ import { ItemService} from '../item.service';
 })
 export class WishlistComponent implements OnInit {
 
-  constructor(private userService: UserService, private itemService: ItemService) { }
+  constructor(private userService: UserService) { }
 
   itemsToRemember: Item[];
 
@@ -22,10 +21,8 @@ export class WishlistComponent implements OnInit {
       this.userService.getWishlist().subscribe(itemsToRemember => this.itemsToRemember = itemsToRemember);
   }
 
-  remove(item: Item): void {
-    this.userService.addToWishlist(item.id).subscribe(item => item = item);
-    this.getWishlist();
+  remove(item: Item, id: number): void {
+    this.itemsToRemember = this.itemsToRemember.filter(h => h !== item);
+    this.userService.deleteFromWishList(id).subscribe();
   }
-
-
 }
