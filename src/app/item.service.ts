@@ -6,6 +6,7 @@ import {MessageService} from "./message.service";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import {ItemCount} from "./shopping-cart/item-count";
+import {formatNumber} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
@@ -95,23 +96,21 @@ export class ItemService {
       );
   }
 
-/**--SORTING--*/
-
-/**--GET COMMENTS LIST--*/
+/**--END OF SORTING--*/
 
   getComments(id: number): Observable<Comment[]> {
     return this.http.get<Comment[]>(`${this.itemsUrl}/${(id)}/comments`);
   }
 
-/**--GET COMMENTS LIST--*/
-
-/**--ADD COMMENT--*/
   addComment(comment: Comment, id: number): Observable<Comment> {
   const url = `${this.itemsUrl}/${id}`;
   return this.http.post<Comment>(url, comment, this.httpOptions);
   }
 
-/**--ADD COMMENT--*/
+  grade(id: number, rating: number): Observable<number>{
+    const url = `${this.itemsUrl}/${id}/grade`;
+    return this.http.post<number>(url, rating, this.httpOptions);
+  }
 
 
   /**

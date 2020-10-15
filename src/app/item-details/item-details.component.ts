@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ItemService} from '../item.service';
 import {UserService} from '../user.service';
+import {FormControl, FormGroup} from "@angular/forms";
 
 
 @Component({
@@ -16,6 +17,8 @@ export class ItemDetailsComponent implements OnInit {
   item: Item;
   action: string = '';
   actionChanged: boolean = false;
+
+  ratings = [1, 2, 3, 4, 5];
 
   constructor(private route: ActivatedRoute,
               private itemService: ItemService,
@@ -55,5 +58,9 @@ export class ItemDetailsComponent implements OnInit {
       this.userService.addToWishlist(this.item.id)
         .subscribe(item => this.item = item);
     }
+  }
+
+  grade(rating: string): void{
+    this.itemService.grade(this.item.id, Number(rating)).subscribe(grade => this.item.rating = grade);
   }
 }

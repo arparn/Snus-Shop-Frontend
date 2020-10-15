@@ -2,8 +2,18 @@
   <h2>Selected Snus: </h2>
   <div class="SelectedSnusName">{{item.name}}</div>
   <img class="SelectedSnusImage" src="{{item.url}}" alt="{{item.name}}">
+  <p>Price: {{item.price}}</p>
+  <p>Rating: {{item.rating}}</p>
+  <p>Strength: {{item.strength}}</p>
   <app-comments></app-comments>
-  <button (click)="addToShoppingCart()">Add to shopping cart</button>
-  <button (click)="addToWishlist()">{{action}} wishlist</button>
-  <button (click)="goBack()">go back</button>
+  <button (click)="addToShoppingCart()">Add to shopping cart</button><br>
+  <button (click)="addToWishlist()">{{action}} wishlist</button><br>
+  <button (click)="goBack()">go back</button><br>
+
+  <label for="ratingChoose">Rate this snus:</label>
+  <select class="ratingBox" id="ratingChoose" name="ratingChoose" #ratingSelector>
+    <option *ngFor="let rating of ratings" [value]="rating">{{rating}}</option>
+  </select>
+  <button class="ratingButton" (click)="grade(ratingSelector.value)">Rate Snus</button>
+
 </div>

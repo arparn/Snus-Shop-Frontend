@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ItemService} from "../item.service";
 import { ActivatedRoute } from '@angular/router';
 import { Comment } from "./comment";
-import {getLocaleDateTimeFormat} from "@angular/common";
 
 @Component({
   selector: 'app-comments',
