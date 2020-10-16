@@ -1,24 +1,37 @@
 <h2>My Cart:</h2>
-<div class="globalDivShopping">
-  <ul class="itemss">
-    <li *ngFor="let itemCount of itemsToBuy">
-      <div class="shopping-cart-item-div">
+<div class="global-cart">
+  <div class="shopping-cart">
+    <ul class="shopping-cart-items">
+      <li *ngFor="let itemCount of itemsToBuy">
         <a routerLink="/detail/{{itemCount.item.id}}">
-          <ul class="SnusInfoo">
-            <li class="SnusNamee"><strong>{{itemCount.item.name}}</strong></li>
-            <li><img class="SnusImagee" src="{{itemCount.item.url}}" alt="{{itemCount.item.name}}"></li>
+          <ul class="info">
+            <li class="name"><strong>{{itemCount.item.name}}</strong></li>
+            <li><img class="image" src="{{itemCount.item.url}}" alt="{{itemCount.item.name}}"></li>
             <li><span>Strength: </span>{{itemCount.item.strength}}</li>
             <li><span>Rating: </span>{{itemCount.item.rating}}</li>
             <li><span>Price: </span>{{itemCount.item.price}}</li>
-            <li><span>ID: </span>{{itemCount.item.id}}</li>
             <li><span>Amount: </span>{{itemCount.quantity}}</li>
-            <li>{{itemCount.item.description}}</li>
           </ul>
         </a>
-      </div>
-      <button class="shopping-cart-item-button" (click)="delete(itemCount)">Delete</button>
-    </li>
-  </ul>
+        <button class="delete-button" (click)="delete(itemCount)">Delete</button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="purchase">
+    <label class="lab">Your first name:
+      <input #firstName/>
+    </label><br>
+    <label class="lab">Your last name:
+      <input #lastName/>
+    </label><br>
+    <label class="lab">Your Address:
+      <input #address/>
+    </label><br>
+    <label class="lab">Zip Code:
+      <input #zipCode/>
+    </label><br>
+    <button (click)="deleteAll(); purchaseAlert.hidden = false; firstName.value=''; lastName.value=''; address.value=''; zipCode.value=''">Purchase</button>
+    <div class="alert" role="alert" [hidden]="true"#purchaseAlert>Your order is in process! We will contact you later:)</div>
+  </div>
 </div>
-
-

@@ -22,9 +22,12 @@ export class ShoppingCartComponent implements OnInit {
     this.userService.getShoppingCart().subscribe(itemsToBuy => this.itemsToBuy = itemsToBuy);
   }
 
-  // tslint:disable-next-line:typedef
   delete(itemCount: ItemCount): void {
     this.itemsToBuy = this.itemsToBuy.filter(h => h !== itemCount);
     this.userService.deleteItemCount(itemCount).subscribe(itemList => this.itemsToBuy = itemList);
+  }
+
+  deleteAll(): void{
+    this.userService.clearShoppingCart().subscribe(cartList => this.itemsToBuy = cartList);
   }
 }
