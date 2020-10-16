@@ -2,7 +2,7 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 body {
-  background-color: whitesmoke;
+  background-color: #cfd9df; /*#6fc4d0  #13547a*/
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;

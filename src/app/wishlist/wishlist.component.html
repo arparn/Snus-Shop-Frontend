@@ -1,20 +1,19 @@
-<h2>My Cart:</h2>
-<ul class="items">
-
-  <li *ngFor="let item of itemsToRemember">
-    <div>
-      <a routerLink="/detail/{{item.id}}">
-        <ul class="SnusInfo">
-          <li class="SnusName"><strong>{{item.name}}</strong></li>
-          <li><img class="SnusImage" src="{{item.url}}" alt="{{item.name}}"></li>
-          <li><span>Strength: </span>{{item.strength}}</li>
-          <li><span>Rating: </span>{{item.rating}}</li>
-          <li><span>Price: </span>{{item.price}}</li>
-          <li><span>ID: </span>{{item.id}}</li>
-          <li>{{item.description}}</li>
-        </ul>
-      </a>
-      <button class="wishlist-item-button" (click)="remove(item, item.id)">Remove</button>
-    </div>
-  </li>
-</ul>
+<div class="wisListGlobal">
+  <h2>My Cart:</h2>
+  <div class="wishList">
+    <ul class="items">
+      <li class="itemsView" *ngFor="let item of itemsToRemember">
+        <a routerLink="/detail/{{item.id}}">
+          <ul class="SnusInfo">
+            <li class="SnusName"><strong>{{item.name}}</strong></li>
+            <li><img class="SnusImage" src="{{item.url}}" alt="{{item.name}}"></li>
+            <li><span>Strength: </span>{{item.strength}}</li>
+            <li><span>Rating: </span>{{item.rating}}</li>
+            <li><span>Price: </span>{{item.price}}</li>
+          </ul>
+        </a>
+        <button class="wishListButton" (click)="remove(item, item.id)">Remove</button>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ItemsComponent } from './items/items.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
-import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ItemSearchComponent } from './item-search/item-search.component';
@@ -20,7 +19,6 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     AppComponent,
     ItemsComponent,
     ItemDetailsComponent,
-    MessagesComponent,
     DashboardComponent,
     ItemSearchComponent,
     CommentsComponent,

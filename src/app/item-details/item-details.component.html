@@ -1,19 +1,29 @@
-<div *ngIf="item">
+<div class="itemDetails" *ngIf="item">
   <h2>Selected Snus: </h2>
-  <div class="SelectedSnusName">{{item.name}}</div>
-  <img class="SelectedSnusImage" src="{{item.url}}" alt="{{item.name}}">
-  <p>Price: {{item.price}}</p>
-  <p>Rating: {{item.rating}}</p>
-  <p>Strength: {{item.strength}}</p>
+
+  <div class="name">{{item.name}}</div>
+
+  <img class="image" src="{{item.url}}" alt="{{item.name}}">
+  <div class="info">
+    <p class="description">Price: {{item.price}}</p>
+    <p class="description">Rating: {{item.rating}}</p>
+    <p class="description">Strength: {{item.strength}}</p>
+    <p class="description">Description: {{item.description}}</p>
+  </div>
+
+  <div class="buttons">
+    <button class="button" (click)="addToShoppingCart()">Add to Shopping Cart</button>
+    <button class="button" (click)="addToWishlist()">{{action}} WishList</button>
+    <button class="button" (click)="goBack()">Go Back</button>
+  </div>
+
+  <div class="rating">
+    <label for="ratingChoose"><strong>Rate this snus:</strong></label>
+    <select class="ratingBox" id="ratingChoose" name="ratingChoose" #ratingSelector>
+      <option *ngFor="let rating of ratings" [value]="rating">{{rating}}</option>
+    </select>
+    <button class="ratingButton" (click)="grade(ratingSelector.value)">Rate Snus</button>
+  </div>
+
   <app-comments></app-comments>
-  <button (click)="addToShoppingCart()">Add to shopping cart</button><br>
-  <button (click)="addToWishlist()">{{action}} wishlist</button><br>
-  <button (click)="goBack()">go back</button><br>
-
-  <label for="ratingChoose">Rate this snus:</label>
-  <select class="ratingBox" id="ratingChoose" name="ratingChoose" #ratingSelector>
-    <option *ngFor="let rating of ratings" [value]="rating">{{rating}}</option>
-  </select>
-  <button class="ratingButton" (click)="grade(ratingSelector.value)">Rate Snus</button>
-
 </div>

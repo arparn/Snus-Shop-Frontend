@@ -7,7 +7,7 @@
 .shopping-cart-items {
   list-style-type: none;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   padding: 10px;
   margin-top: 20px;
   margin-bottom: 10px;
@@ -25,6 +25,14 @@
   margin: 10px;
   display: flex;
   flex-flow: column wrap;
+}
+
+.purchaseButt {
+  background-color: #e2ebf0;
+}
+
+.purchaseButt:hover {
+  background-color: #888888;
 }
 
 .lab {
@@ -49,15 +57,30 @@ li a{
 
 .info {
   padding: 0;
-  border: black solid 2px;
-  background: darkgrey;
+  border: black 2px;
+  background: #e2ebf0;
   list-style-type: none;
   color: black;
   font-family: Helvetica, sans-serif;
   text-align: center;
 }
 
+.itemCount {
+  margin-right: 2px;
+  margin-bottom: 2px;
+}
+
+.info:hover {
+  background-color: #888888;
+}
+
 .delete-button {
   margin-top: 10px;
+  margin-bottom: 5px;
   width: 200px;
+  background-color: #e2ebf0;
+}
+
+.delete-button:hover {
+  background-color: #888888;
 }
