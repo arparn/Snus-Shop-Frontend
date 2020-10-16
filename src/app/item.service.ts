@@ -24,20 +24,12 @@ export class ItemService {
                private messageService: MessageService) { }
 
   getItems(): Observable<Item[]> {
-    return this.http.get<Item[]>(this.itemsUrl)
-      .pipe(
-        tap(_ => this.log('fetched items')),
-        catchError(this.handleError<Item[]>('getItems', []))
-      );
+    return this.http.get<Item[]>(this.itemsUrl);
   }
 
   getItem(id: number): Observable<Item> {
     const url = `${this.itemsUrl}/${id}`;
-    return this.http.get<Item>(url)
-      .pipe(
-        tap(_ => this.log(`fetched item id=${id}`)),
-        catchError(this.handleError<Item>(`getItem id=${id}`))
-      );
+    return this.http.get<Item>(url);
   }
 
   /* GET items whose name contains search term */
@@ -45,55 +37,29 @@ export class ItemService {
     if (!term.trim()) {
       return of([]);  // if not search term, return empty item array.
     }
-    return this.http.get<Item[]>(`${this.itemsUrl}/?query=${term}`)
-      .pipe(
-        tap(x => x.length ?
-          this.log(`found items matching "${term}"`) :
-          this.log(`no items matching "${term}"`)),
-        catchError(this.handleError<Item[]>('searchItems', []))
-      );
+    return this.http.get<Item[]>(`${this.itemsUrl}/?query=${term}`);
   }
 
 /**--SORTING--*/
 
   getByRatingMax(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/ratingMax`)
-      .pipe(
-        tap(_ => this.log('filtered items')),
-        catchError(this.handleError<Item[]>('getByRatingMax', []))
-      );
+    return this.http.get<Item[]>(`${this.itemsUrl}/ratingMax`);
   }
 
   getByStrengthMax(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/strengthMax`)
-      .pipe(
-        tap(_ => this.log('fetched items')),
-        catchError(this.handleError<Item[]>('getItems', []))
-      );
+    return this.http.get<Item[]>(`${this.itemsUrl}/strengthMax`);
   }
 
   getByStrengthMin(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/strengthMin`)
-      .pipe(
-        tap(_ => this.log('fetched items')),
-        catchError(this.handleError<Item[]>('getItems', []))
-      );
+    return this.http.get<Item[]>(`${this.itemsUrl}/strengthMin`);
   }
 
   getByPriceMax(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/priceMax`)
-      .pipe(
-        tap(_ => this.log('fetched items')),
-        catchError(this.handleError<Item[]>('getItems', []))
-      );
+    return this.http.get<Item[]>(`${this.itemsUrl}/priceMax`);
   }
 
   getByPriceMin(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/priceMin`)
-      .pipe(
-        tap(_ => this.log('fetched items')),
-        catchError(this.handleError<Item[]>('getItems', []))
-      );
+    return this.http.get<Item[]>(`${this.itemsUrl}/priceMin`);
   }
 
 /**--END OF SORTING--*/

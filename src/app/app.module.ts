@@ -16,6 +16,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
