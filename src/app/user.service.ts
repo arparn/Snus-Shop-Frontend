@@ -22,7 +22,7 @@ export class UserService {
   }
 
   addToShoppingCart(id: number): Observable<Item> {
-      const url = 'api/user/shopping-cart';
+      const url = `${this.userUrl}/shopping-cart`;
       return this.http.post<Item>(url, id, this.httpOptions);
   }
 
@@ -43,5 +43,10 @@ export class UserService {
   deleteFromWishList(id: number): Observable<Item[]> {
     const url = `${this.userUrl}/${id}/deleteWish`;
     return this.http.delete<Item[]>(url, this.httpOptions);
+  }
+
+  clearShoppingCart(): Observable<ItemCount[]> {
+    const url = `${this.userUrl}/clear`;
+    return this.http.delete<ItemCount[]>(url, this.httpOptions);
   }
 }
