@@ -1,24 +1,25 @@
 <h2>My Cart:</h2>
-<div class="globalDivShopping">
-  <ul class="itemss">
+<div class="shopping-cart">
+  <ul class="shopping-cart-items">
     <li *ngFor="let itemCount of itemsToBuy">
-      <div class="shopping-cart-item-div">
-        <a routerLink="/detail/{{itemCount.item.id}}">
-          <ul class="SnusInfoo">
-            <li class="SnusNamee"><strong>{{itemCount.item.name}}</strong></li>
-            <li><img class="SnusImagee" src="{{itemCount.item.url}}" alt="{{itemCount.item.name}}"></li>
-            <li><span>Strength: </span>{{itemCount.item.strength}}</li>
-            <li><span>Rating: </span>{{itemCount.item.rating}}</li>
-            <li><span>Price: </span>{{itemCount.item.price}}</li>
-            <li><span>ID: </span>{{itemCount.item.id}}</li>
-            <li><span>Amount: </span>{{itemCount.quantity}}</li>
-            <li>{{itemCount.item.description}}</li>
-          </ul>
-        </a>
-      </div>
-      <button class="shopping-cart-item-button" (click)="delete(itemCount)">Delete</button>
+      <a routerLink="/detail/{{itemCount.item.id}}">
+        <ul class="info">
+          <li class="name"><strong>{{itemCount.item.name}}</strong></li>
+          <li><img class="image" src="{{itemCount.item.url}}" alt="{{itemCount.item.name}}"></li>
+          <li><span>Strength: </span>{{itemCount.item.strength}}</li>
+          <li><span>Rating: </span>{{itemCount.item.rating}}</li>
+          <li><span>Price: </span>{{itemCount.item.price}}</li>
+          <li><span>ID: </span>{{itemCount.item.id}}</li>
+          <li><span>Amount: </span>{{itemCount.quantity}}</li>
+          <li>{{itemCount.item.description}}</li>
+        </ul>
+      </a>
+      <button class="delete-button" (click)="delete(itemCount)">Delete</button>
     </li>
   </ul>
+</div>
+<div class="purchase">
+
 </div>
 
 

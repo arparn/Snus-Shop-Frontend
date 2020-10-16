@@ -1,20 +1,25 @@
-.itemss {
+.shopping-cart-items {
   list-style-type: none;
+  display: flex;
+  flex-direction: row;
 }
 
-.SnusNamee {
+li a{
+  text-decoration: none;
+}
+
+.name {
   color: black;
   font-family: Helvetica, sans-serif;
   font-size: 200%;
 }
 
-.SnusImagee {
+.image {
   width: 200px;
   height: 200px;
 }
 
-.SnusInfoo {
-  float: left;
+.info {
   margin: 4px;
   padding: 0;
   border: black solid 2px;
@@ -25,12 +30,7 @@
   font-family: Helvetica, sans-serif;
 }
 
-
-.shopping-cart-item-button {
-  align-self: flex-start;
+.delete-button {
   width: 200px;
   height: 20px;
 }
-
-
-
