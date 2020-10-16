@@ -1,41 +1,45 @@
-<app-item-search></app-item-search>
-  <p>Sort by:</p>
-  <form [formGroup]="filterForm">
-    <label>
-      <input type="radio" value="allSnus" formControlName="snusFilter">
-    </label>All snus<br>
-    <label>
-      <input type="radio" value="topSell" formControlName="snusFilter">
-    </label>Top sells<br>
-    <label>
-      <input type="radio" value="maxStre" formControlName="snusFilter">
-    </label>Max strength<br>
-    <label>
-      <input type="radio" value="minStre" formControlName="snusFilter">
-    </label>Min strength<br>
-    <label>
-      <input type="radio" value="maxPric" formControlName="snusFilter">
-    </label>Most expensive first<br>
-    <label>
-      <input type="radio" value="minPric" formControlName="snusFilter">
-    </label>Less expensive first<br>
-  </form>
-<button type="submit" (click)="filter(filterForm.value)">Filter</button>
+<div class="mainPage">
+  <div class="filters">
+    <h4>Sort by:</h4>
+    <form [formGroup]="filterForm">
+        <label class="radioBut">
+          <input type="radio" value="allSnus" formControlName="snusFilter">
+        </label>All snus<br>
+        <label class="radioBut">
+          <input type="radio" value="topSell" formControlName="snusFilter">
+        </label>Top sells<br>
+        <label class="radioBut">
+          <input type="radio" value="maxStre" formControlName="snusFilter">
+        </label>Max strength<br>
+        <label class="radioBut">
+          <input type="radio" value="minStre" formControlName="snusFilter">
+        </label>Min strength<br>
+        <label class="radioBut">
+          <input type="radio" value="maxPric" formControlName="snusFilter">
+        </label>Most expensive first<br>
+        <label class="radioBut">
+          <input type="radio" value="minPric" formControlName="snusFilter">
+        </label>Less expensive first<br>
+    </form>
+    <button class="filterBut" type="submit" (click)="filter(filterForm.value)">Filter</button>
+  </div>
 
-
-<h2>Our Goods:</h2>
-<ul class="items">
-  <li *ngFor="let item of items">
-    <a routerLink="/detail/{{item.id}}">
-      <ul class="SnusInfo">
-        <li class="SnusName"><strong>{{item.name}}</strong></li>
-        <li><img class="SnusImage" src="{{item.url}}" alt="{{item.name}}"></li>
-        <li><span>Strength: </span>{{item.strength}}</li>
-        <li><span>Rating: </span>{{item.rating}}</li>
-        <li><span>Price: </span>{{item.price}}</li>
-        <li><span>ID: </span>{{item.id}}</li>
-        <li>{{item.description}}</li>
+  <div class="goods">
+    <h2>Our Goods:</h2>
+      <ul class="items">
+        <li class="allItems" *ngFor="let item of items">
+          <a routerLink="/detail/{{item.id}}">
+            <ul class="SnusInfo">
+              <li class="SnusName"><strong>{{item.name}}</strong></li>
+              <li><img class="SnusImage" src="{{item.url}}" alt="{{item.name}}"></li>
+              <li><span>Strength: </span>{{item.strength}}</li>
+              <li><span>Rating: </span>{{item.rating}}</li>
+              <li><span>Price: </span>{{item.price}}</li>
+              <li><span>ID: </span>{{item.id}}</li>
+              <li>{{item.description}}</li>
+            </ul>
+          </a>
+        </li>
       </ul>
-    </a>
-  </li>
-</ul>
+  </div>
+</div>

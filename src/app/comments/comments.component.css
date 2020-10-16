@@ -1,0 +1,45 @@
+.comments {
+  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.leaveComment {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.leaveComBtn {
+  width: 200px;
+  background-color: #e2ebf0;
+}
+
+.leaveComBtn:hover {
+  background-color: #888888;
+}
+
+.lastNameInp {
+  margin-left: 3px;
+}
+
+.commentArea {
+  width: 600px;
+  height: 150px;
+}
+
+.commentsSection {
+  list-style-type: none;
+}
+
+.commentBody {
+  margin-bottom: 8px;
+  background-color: #e2ebf0;
+  display: flex;
+  flex-direction: column;
+  margin-right: 100px;
+}
+
+.time {
+  align-self: flex-end;
+}

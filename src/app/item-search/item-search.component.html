@@ -1,11 +1,9 @@
 <div class="search-com" id="search-component">
-  <h4><label for="search-box">Snus Search</label></h4>
-
+  <label class="searchLab" for="search-box">Snus Search:</label>
   <input #searchBox id="search-box" (input)="search(searchBox.value)" />
-
   <ul class="search-result">
     <li *ngFor="let item of items$ | async" >
-      <a routerLink="/detail/{{item.id}}">
+      <a routerLink="/detail/{{item.id}}" (click)="searchBox.value = ''; search(searchBox.value)" >
         {{item.name}}
       </a>
     </li>

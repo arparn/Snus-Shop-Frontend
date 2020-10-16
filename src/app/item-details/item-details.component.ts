@@ -4,8 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ItemService} from '../item.service';
 import {UserService} from '../user.service';
-import {FormControl, FormGroup} from "@angular/forms";
-
 
 @Component({
   selector: 'app-item-details',

@@ -2,7 +2,7 @@
 <div class="global-cart">
   <div class="shopping-cart">
     <ul class="shopping-cart-items">
-      <li *ngFor="let itemCount of itemsToBuy">
+      <li class="itemCount" *ngFor="let itemCount of itemsToBuy">
         <a routerLink="/detail/{{itemCount.item.id}}">
           <ul class="info">
             <li class="name"><strong>{{itemCount.item.name}}</strong></li>
@@ -31,7 +31,7 @@
     <label class="lab">Zip Code:
       <input #zipCode/>
     </label><br>
-    <button *ngIf="itemsToBuy.length > 0" (click)="deleteAll(); purchaseAlert.hidden = false; firstName.value=''; lastName.value=''; address.value=''; zipCode.value=''">Purchase</button>
+    <button class="purchaseButt" *ngIf="itemsToBuy.length > 0" (click)="deleteAll(); purchaseAlert.hidden = false; firstName.value=''; lastName.value=''; address.value=''; zipCode.value=''">Purchase</button>
     <div class="alert" role="alert" [hidden]="true"#purchaseAlert>Your order is in process! We will contact you later:)</div>
   </div>
 </div>

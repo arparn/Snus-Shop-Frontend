@@ -1,24 +1,25 @@
-<p>COMMENTS:</p>
-<div>
-  <ul class="comments">
-    <li *ngFor="let comment of comments">
-      {{comment.firstName}}<span>:</span><br>{{comment.comment}}
-      <br>
-      {{comment.time}}
-    </li>
-  </ul>
-</div>
+<div class="comments">
+  <p><strong>COMMENTS:</strong></p>
+  <div>
+    <ul class="commentsSection">
+      <li class="commentBody" *ngFor="let comment of comments">
+        {{comment.firstName}}:<br>{{comment.comment}}
+        <p class="time">{{comment.time}}</p>
+      </li>
+    </ul>
+  </div>
 
-<div>
-  <label>Leave comment:</label>
-  <label>Your first name:
-    <input #firstName/>
-  </label>
-  <label>Your last name:
-    <input #lastName/>
-  </label>
-  <label>Commentary:
-    <input #comment/>
-  </label>
-  <button (click)="addComment(firstName.value, lastName.value, comment.value); firstName.value = ''; lastName.value = ''; comment.value = ''">Add Comment</button>
+  <div class="leaveComment">
+    <label><strong>Leave comment:</strong></label>
+    <label>Your first name:
+      <input #firstName/>
+    </label>
+    <label>Your last name:
+      <input #lastName class="lastNameInp"/>
+    </label>
+    <label>Commentary:<br>
+      <textarea #comment class="commentArea"></textarea>
+    </label>
+    <button class="leaveComBtn" (click)="addComment(firstName.value, lastName.value, comment.value); firstName.value = ''; lastName.value = ''; comment.value = ''">Add Comment</button>
+  </div>
 </div>
