@@ -12,7 +12,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(private itemService: ItemService) { }
 
-  // tslint:disable-next-line:typedef
   ngOnInit() {
     this.getItems();
   }
