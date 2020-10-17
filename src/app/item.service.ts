@@ -2,11 +2,8 @@ import { Injectable } from '@angular/core';
 import { Item } from "./items/item";
 import { Comment } from "./comments/comment";
 import { Observable, of } from 'rxjs';
-import {MessageService} from "./message.service";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
-import {ItemCount} from "./shopping-cart/item-count";
-import {formatNumber} from "@angular/common";
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +14,11 @@ export class ItemService {
 
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  constructor( private http: HttpClient,
-               private messageService: MessageService) { }
+  constructor(private http: HttpClient) {
+  }
 
   getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(this.itemsUrl);
@@ -40,67 +37,41 @@ export class ItemService {
     return this.http.get<Item[]>(`${this.itemsUrl}/?query=${term}`);
   }
 
-/**--SORTING--*/
+  /**--SORTING--*/
 
   getByRatingMax(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/ratingMax`);
+    return this.http.get<Item[]>(`${this.itemsUrl}/rating-max`);
   }
 
   getByStrengthMax(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/strengthMax`);
+    return this.http.get<Item[]>(`${this.itemsUrl}/strength-max`);
   }
 
   getByStrengthMin(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/strengthMin`);
+    return this.http.get<Item[]>(`${this.itemsUrl}/strength-min`);
   }
 
   getByPriceMax(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/priceMax`);
+    return this.http.get<Item[]>(`${this.itemsUrl}/price-max`);
   }
 
   getByPriceMin(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/priceMin`);
+    return this.http.get<Item[]>(`${this.itemsUrl}/price-min`);
   }
 
-/**--END OF SORTING--*/
+  /**--END OF SORTING--*/
 
   getComments(id: number): Observable<Comment[]> {
     return this.http.get<Comment[]>(`${this.itemsUrl}/${(id)}/comments`);
   }
 
   addComment(comment: Comment, id: number): Observable<Comment> {
-  const url = `${this.itemsUrl}/${id}`;
-  return this.http.post<Comment>(url, comment, this.httpOptions);
+    const url = `${this.itemsUrl}/${id}`;
+    return this.http.post<Comment>(url, comment, this.httpOptions);
   }
 
-  grade(id: number, rating: number): Observable<number>{
-    const url = `${this.itemsUrl}/${id}/grade`;
+  grade(id: number, rating: number): Observable<number> {
+    const url = `${this.itemsUrl}/${id}/rating`;
     return this.http.post<number>(url, rating, this.httpOptions);
-  }
-
-
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-
-  /** Log a ItemService message with the MessageService */
-  private log(message: string) {
-    this.messageService.add(`ItemService: ${message}`);
   }
 }
