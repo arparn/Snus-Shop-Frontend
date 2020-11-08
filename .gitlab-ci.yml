@@ -4,7 +4,13 @@ stages:
 
 build shop:
   stage: build
-
+  image: node:12-alpine
+  cache:
+    paths:
+      - node_modules
+  artifacts:
+    paths:
+      - dist
   tags:
     - shop
   script:
