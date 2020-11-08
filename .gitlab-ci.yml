@@ -10,7 +10,7 @@ build shop:
       - node_modules
   artifacts:
     paths:
-      - /dist/snus-shop-frontend
+      - dist/snus-shop-frontend
   tags:
     - shop
   script:
