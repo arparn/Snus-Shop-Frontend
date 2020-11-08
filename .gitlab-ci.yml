@@ -25,3 +25,4 @@ deploy shop:
     - mkdir -p ~/front-deployment
     - rm -rf ~/front-deployment/*
     - cp -r dist/angular-shop/. ~/front-deployment
+
