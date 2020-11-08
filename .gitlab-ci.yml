@@ -10,7 +10,7 @@ build shop:
       - node_modules
   artifacts:
     paths:
-      - dist
+      - /dist/snus-shop-frontend
   tags:
     - shop
   script:
@@ -25,4 +25,3 @@ deploy shop:
     - mkdir -p ~/front-deployment
     - rm -rf ~/front-deployment/*
     - cp -r dist/angular-shop/. ~/front-deployment
-
