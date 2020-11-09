@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getItems(): void {
-    this.itemService.getItems()
+    this.itemService.getByRatingMax()
       .subscribe(items => this.items = items.slice(1, 5));
   }
 }
