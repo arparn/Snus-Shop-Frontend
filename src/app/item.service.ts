@@ -40,23 +40,23 @@ export class ItemService {
   /**--SORTING--*/
 
   getByRatingMax(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/rating-max`);
+    return this.http.get<Item[]>(`${this.itemsUrl}/?filter=rating`);
   }
 
   getByStrengthMax(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/strength-max`);
+    return this.http.get<Item[]>(`${this.itemsUrl}/?filter=strength`);
   }
 
   getByStrengthMin(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/strength-min`);
+    return this.http.get<Item[]>(`${this.itemsUrl}/?filter=strength&direction=MIN`);
   }
 
   getByPriceMax(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/price-max`);
+    return this.http.get<Item[]>(`${this.itemsUrl}/?filter=price`);
   }
 
   getByPriceMin(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.itemsUrl}/price-min`);
+    return this.http.get<Item[]>(`${this.itemsUrl}/?filter=price&direction=MIN`);
   }
 
   /**--END OF SORTING--*/
