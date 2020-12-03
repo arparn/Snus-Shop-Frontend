@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
+    localStorage.setItem("filter", "allSnus");
     this.getItems();
   }
 

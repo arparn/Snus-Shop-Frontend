@@ -13,7 +13,7 @@ export class ItemsComponent implements OnInit {
   items: Item[];
 
   filterForm = new FormGroup({
-    snusFilter: new FormControl("allSnus"),
+    snusFilter: new FormControl(localStorage.getItem("filter")),
   });
 
   get fc() {
@@ -22,16 +22,22 @@ export class ItemsComponent implements OnInit {
 
   filter(value: JSON): void{
     if (JSON.stringify(value).substr(15, 7) == "topSell") {
+      localStorage.setItem("filter", "topSell");
       this.getByRatingMax();
     } else if (JSON.stringify(value).substr(15, 7) == "allSnus") {
+      localStorage.setItem("filter", "allSnus");
       this.getItems();
     } else if (JSON.stringify(value).substr(15, 7) == "maxStre") {
+      localStorage.setItem("filter", "maxStre");
       this.getByStrengthMax();
     } else if (JSON.stringify(value).substr(15, 7) == "minStre") {
+      localStorage.setItem("filter", "minStre");
       this.getByStrengthMin()
     } else if (JSON.stringify(value).substr(15, 7) == "maxPric") {
+      localStorage.setItem("filter", "maxPric");
       this.getByPriceMax()
     } else if (JSON.stringify(value).substr(15, 7) == "minPric") {
+      localStorage.setItem("filter", "minPric");
       this.getByPriceMin()
     }
   }
@@ -43,7 +49,23 @@ export class ItemsComponent implements OnInit {
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
-    this.getItems();
+    if (localStorage.getItem("filter") != null) {
+      if (localStorage.getItem("filter") == "topSell") {
+        this.getByRatingMax();
+      } else if (localStorage.getItem("filter") == "maxStre") {
+        this.getByStrengthMax();
+      } else if (localStorage.getItem("filter") == "minStre") {
+        this.getByStrengthMin();
+      } else if (localStorage.getItem("filter") == "maxPric") {
+        this.getByPriceMax();
+      } else if (localStorage.getItem("filter") == "minPric") {
+        this.getByPriceMin();
+      } else if (localStorage.getItem("filter") == "allSnus") {
+        this.getItems();
+      }
+    } else {
+      this.getItems();
+    }
   }
 
   getByRatingMax(): void {
