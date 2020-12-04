@@ -62,11 +62,11 @@ export class ItemService {
   /**--END OF SORTING--*/
 
   getComments(id: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${this.itemsUrl}/${(id)}/comments`);
+    return this.http.get<Comment[]>(`comment/${(id)}/comments`);
   }
 
   addComment(comment: Comment, id: number): Observable<Comment> {
-    const url = `${this.itemsUrl}/${id}`;
+    const url = `comment/${id}`;
     return this.http.post<Comment>(url, comment, this.httpOptions);
   }
 
