@@ -9,8 +9,6 @@ import { Item } from './items/item';
 })
 export class UserService {
 
-  private userUrl = 'api/user';
-
   constructor(private http: HttpClient) { }
 
   httpOptions = {
@@ -18,35 +16,35 @@ export class UserService {
   };
 
   addToWishlist(id: number): Observable<Item> {
-        return this.http.post<Item>(`${this.userUrl}/wish-list`, id, this.httpOptions);
+        return this.http.post<Item>(`api/wishlist`, id, this.httpOptions);
   }
 
   addToShoppingCart(id: number): Observable<Item> {
-      const url = `${this.userUrl}/shopping-cart`;
+      const url = `api/cart`;
       return this.http.post<Item>(url, id, this.httpOptions);
   }
 
   getShoppingCart(): Observable<ItemCount[]> {
-    return this.http.get<ItemCount[]>(`${this.userUrl}/shopping-cart`);
+    return this.http.get<ItemCount[]>(`api/cart`);
   }
 
   getWishlist(): Observable<Item[]> {
-    return this.http.get<Item[]>(this.userUrl);
+    return this.http.get<Item[]>(`api/wishlist`);
   }
 
   deleteItemCount(itemCount: ItemCount | number): Observable<ItemCount[]> {
     const id = typeof itemCount === 'number' ? itemCount : itemCount.item.id;
-    const url = `${this.userUrl}/${id}`;
+    const url = `api/cart/${id}`;
     return this.http.delete<ItemCount[]>(url, this.httpOptions);
   }
 
   deleteFromWishList(id: number): Observable<Item[]> {
-    const url = `${this.userUrl}/${id}/wish-list`;
+    const url = `api/${id}/wishlist`;
     return this.http.delete<Item[]>(url, this.httpOptions);
   }
 
   clearShoppingCart(): Observable<ItemCount[]> {
-    const url = `${this.userUrl}/shopping-cart`;
+    const url = `api/cart/shopping-cart`;
     return this.http.delete<ItemCount[]>(url, this.httpOptions);
   }
 }
