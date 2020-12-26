@@ -11,6 +11,7 @@ import { ItemSearchComponent } from './item-search/item-search.component';
 import { CommentsComponent } from './comments/comments.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     ItemSearchComponent,
     CommentsComponent,
     WishlistComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    RegisterComponent
   ],
   imports: [
     FormsModule,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Item } from "./items/item";
-import { Comment } from "./comments/comment";
+import { Item } from './items/item';
+import { Comment } from './comments/comment';
 import { Observable, of } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
@@ -62,11 +62,11 @@ export class ItemService {
   /**--END OF SORTING--*/
 
   getComments(id: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`comment/${(id)}/comments`);
+    return this.http.get<Comment[]>(`api/comment/${(id)}/comments`);
   }
 
   addComment(comment: Comment, id: number): Observable<Comment> {
-    const url = `comment/${id}`;
+    const url = `api/comment/${id}`;
     return this.http.post<Comment>(url, comment, this.httpOptions);
   }
 
