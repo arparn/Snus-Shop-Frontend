@@ -3,6 +3,7 @@ import {FormBuilder} from "@angular/forms";
 import {UserService} from "../user.service";
 import {Router} from "@angular/router";
 import {first} from "rxjs/operators";
+import {AuthenticationService} from "../authentication.service";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   registerForm;
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService,
+    private authenticationService: AuthenticationService,
     private router: Router
   ) {
     this.registerForm = this.formBuilder.group({
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
     // Process checkout data here
     console.log(userPassword);
     // sendToBACKENDDDDDD
-    this.userService.login(userPassword)
+    this.authenticationService.login(userPassword)
       .pipe(first())
       .subscribe(
         (user) => {
