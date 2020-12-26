@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder} from "@angular/forms";
 import {UserService} from "../user.service";
+import {Router} from "@angular/router";
 import {first} from "rxjs/operators";
-import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   registerForm;
   constructor(
@@ -28,11 +28,11 @@ export class RegisterComponent implements OnInit {
     // Process checkout data here
     console.log(userPassword);
     // sendToBACKENDDDDDD
-    this.userService.register(userPassword)
+    this.userService.login(userPassword)
       .pipe(first())
       .subscribe(
-        () => {
-          console.log('reg suc');
+        (user) => {
+          console.log('user: ', user);
           this.router.navigate(['/login']);
         },
         error => {
@@ -42,4 +42,5 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm.reset();
   }
+
 }

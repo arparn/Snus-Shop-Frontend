@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Item } from './items/item';
 import {UserPassword} from './user-password';
+import {User} from "./user";
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,10 @@ export class UserService {
   }
 
   register(userPassword: UserPassword): Observable<any> {
-    return this.http.post(`${this.userUrl}/register`, userPassword, this.httpOptions);
+    return this.http.post<UserPassword>(`${this.userUrl}/register`, userPassword, this.httpOptions);
+  }
+
+  login(userPassword: UserPassword): Observable<User> {
+    return this.http.post<User>(`${this.userUrl}/login`, userPassword, this.httpOptions);
   }
 }

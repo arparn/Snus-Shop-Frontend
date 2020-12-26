@@ -12,6 +12,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { RegisterComponent } from './register/register.component';
     CommentsComponent,
     WishlistComponent,
     ShoppingCartComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
