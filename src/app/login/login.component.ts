@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {UserService} from "../user.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {first} from "rxjs/operators";
 import {AuthenticationService} from "../authentication.service";
 
@@ -13,15 +13,22 @@ import {AuthenticationService} from "../authentication.service";
 export class LoginComponent implements OnInit {
 
   registerForm;
+  returnUrl: string;
+
   constructor(
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.registerForm = this.formBuilder.group({
       username: '',
       password: ''
     });
+
+    if (this.authenticationService.CurrentUserValue) {
+      this.router.navigate(['/']);
+    }
   }
 
   // tslint:disable-next-line:typedef
@@ -34,13 +41,16 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (user) => {
           console.log('user: ', user);
-          this.router.navigate(['/login']);
+          this.router.navigate([this.returnUrl]);
         },
         error => {
+          console.log(error);
         });
+
   }
 
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.registerForm.reset();
   }
 

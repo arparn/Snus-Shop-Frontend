@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {UserService} from "../user.service";
 import {first} from "rxjs/operators";
-import {ActivatedRoute, Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-register',
