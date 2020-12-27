@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (user) => {
           console.log('user: ', user);
-          this.router.navigate([this.returnUrl]);
+          this.router.navigate([this.returnUrl]).then(r => location.href = '/dashboard');
         },
         error => {
           console.log(error);

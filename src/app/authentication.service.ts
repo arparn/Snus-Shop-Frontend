@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
-import {User} from "./user";
-import {UserService} from "./user.service";
-import {map} from "rxjs/operators";
+import {BehaviorSubject, Observable} from 'rxjs';
+import {User} from './user';
+import {UserService} from './user.service';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,8 @@ export class AuthenticationService {
   }
 
   public get CurrentUserValue(): User {
-    return this.currentUserSubject ? this.currentUserSubject.value : undefined;
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    return this.currentUserSubject.value;
   }
 
   login(userPassword): Observable<User> {
@@ -31,6 +32,7 @@ export class AuthenticationService {
       }));
   }
 
+  // tslint:disable-next-line:typedef
   logout() {
     // remove user from local storage and set current user to null
     localStorage.removeItem('currentUser');

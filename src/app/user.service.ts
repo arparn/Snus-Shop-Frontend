@@ -10,7 +10,7 @@ import {User} from "./user";
   providedIn: 'root'
 })
 export class UserService {
-  private userUrl = 'api/user';
+  private userUrl = 'api///user';
   constructor(private http: HttpClient) { }
 
   httpOptions = {
