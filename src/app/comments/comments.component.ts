@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ItemService} from '../item.service';
 import { ActivatedRoute } from '@angular/router';
 import { Comment } from './comment';
+import {AuthenticationService} from "../authentication.service";
+import {User} from "../user";
 
 @Component({
   selector: 'app-comments',
@@ -11,11 +13,15 @@ import { Comment } from './comment';
 export class CommentsComponent implements OnInit {
 
   comments: Comment[];
+  user: User;
 
-  constructor(private route: ActivatedRoute, private itemService: ItemService) { }
+  constructor(private route: ActivatedRoute,
+              private itemService: ItemService,
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.getComments();
+    this.user = this.authenticationService.CurrentUserValue;
   }
 
   getComments(): void{
