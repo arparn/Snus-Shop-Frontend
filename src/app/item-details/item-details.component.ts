@@ -14,8 +14,7 @@ import {FormBuilder} from "@angular/forms";
   styleUrls: ['./item-details.component.css']
 })
 export class ItemDetailsComponent implements OnInit {
-  adminPr;
-  adminDescriptionn;
+
   user: User;
   item: Item;
   action: string = '';
@@ -29,14 +28,7 @@ export class ItemDetailsComponent implements OnInit {
               private itemService: ItemService,
               private location: Location,
               private userService: UserService,
-              private authenticationService: AuthenticationService) {
-    this.adminDescriptionn = this.formBuilder.group({
-      adminDescription: ''
-    });
-    this.adminPr = this.formBuilder.group({
-      adminPri: ''
-    });
-  }
+              private authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {
     this.user = this.authenticationService.CurrentUserValue;
@@ -74,15 +66,17 @@ export class ItemDetailsComponent implements OnInit {
     }
   }
 
-  grade(rating: string, token: string): void{
+  grade(rating: string): void{
     this.itemService.grade(this.item.id, Number(rating)).subscribe(grade => this.item.rating = grade);
   }
 
-  sendNewPrice(price: number): void {
-    this.itemService.changePrice(this.item.id, price).subscribe();
+  sendNewPrice(price: string): void {
+    this.itemService.changePrice(this.item.id, price).subscribe(price => this.item.price = price);
+    location.reload(true);
   }
 
   sendDescription(text: string): void {
-    this.itemService.changeDescription(this.item.id, text).subscribe();
+    this.itemService.changeDescription(this.item.id, text).subscribe(desc => this.item.description = desc);
+    location.reload(true);
   }
 }

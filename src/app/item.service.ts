@@ -62,7 +62,7 @@ export class ItemService {
   /**--END OF SORTING--*/
 
   getComments(id: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`api/comment/${(id)}/comments`);
+    return this.http.get<Comment[]>(`api/comment/${id}/comments`);
   }
 
   addComment(comment: Comment, id: number): Observable<Comment> {
@@ -75,7 +75,7 @@ export class ItemService {
     return this.http.post<number>(url, rating, this.httpOptions);
   }
 
-  changePrice(id: number, price: number): Observable<any> {
+  changePrice(id: number, price: string): Observable<any> {
     const url = `${this.itemsUrl}/${id}/price`;
     return this.http.post(url, price, this.httpOptions);
   }
@@ -83,5 +83,10 @@ export class ItemService {
   changeDescription(id: number, text: string): Observable<any> {
     const url = `${this.itemsUrl}/${id}/description`;
     return this.http.post(url, text, this.httpOptions);
+  }
+
+  deleteCommentAdm(id: number, commId: number): Observable<any> {
+    const url = `api/comment/${id}/${commId}/prohibited_comment`;
+    return this.http.delete(url, this.httpOptions);
   }
 }

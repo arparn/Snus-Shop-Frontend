@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Comment } from './comment';
 import {AuthenticationService} from "../authentication.service";
 import {User} from "../user";
+import {Info} from "../info";
 
 @Component({
   selector: 'app-comments',
@@ -12,6 +13,7 @@ import {User} from "../user";
 })
 export class CommentsComponent implements OnInit {
 
+  info: Info;
   comments: Comment[];
   user: User;
 
@@ -40,5 +42,10 @@ export class CommentsComponent implements OnInit {
       .subscribe(comment => {
         this.comments.push(comment);
       });
+  }
+
+  deleteComment(commId: number): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.itemService.deleteCommentAdm(id, commId).subscribe(comments => this.comments = comments);
   }
 }

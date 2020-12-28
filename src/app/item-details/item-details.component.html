@@ -9,22 +9,18 @@
     <p class="description">Description: {{item.description}}</p>
   </div >
   <div *ngIf="user !== null && user.role === 'ADMIN'" class="adminDes">
-    <form [formGroup]="adminDescriptionn" (ngSubmit)="sendDescription(adminDescriptionn.value)">
       <label for="adminDescription">
         Change description:
       </label>
-      <input id="adminDescription" type="text" formControlName="adminDescription">
-      <button class="button" type="submit">Submit changes</button>
-    </form>
+      <input id="adminDescription" type="text" #adminDescr>
+      <button class="button" type="submit" (click)="sendDescription(adminDescr.value)">Submit changes</button>
   </div>
   <div *ngIf="user !== null && user.role === 'ADMIN'" class="adminPrice">
-    <form [formGroup]="adminPr" (ngSubmit)="sendNewPrice(adminPr.value)">
       <label for="adminPri">
         Change price:
       </label>
-      <input id="adminPri" type="text" formControlName="adminPri">
-      <button class="button" type="submit" >Submit changes</button>
-    </form>
+      <input id="adminPri" type="text" #adminPric>
+      <button class="button" type="submit" (click)="sendNewPrice(adminPric.value)">Submit changes</button>
   </div>
   <div class="buttons">
     <button class="button" (click)="addToShoppingCart()">Add to Shopping Cart</button>
