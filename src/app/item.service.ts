@@ -70,7 +70,7 @@ export class ItemService {
     return this.http.post<Comment>(url, comment, this.httpOptions);
   }
 
-  grade(id: number, rating: number): Observable<number> {
+  grade(id: number, rating: number): Observable<any> {
     const url = `${this.itemsUrl}/${id}/rating`;
     return this.http.post<number>(url, rating, this.httpOptions);
   }

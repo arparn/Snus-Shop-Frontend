@@ -58,7 +58,7 @@ export class ItemDetailsComponent implements OnInit {
     }
   }
 
-  grade(rating: string): void{
+  grade(rating: string, token: string): void{
     this.itemService.grade(this.item.id, Number(rating)).subscribe(grade => this.item.rating = grade);
   }
 }
