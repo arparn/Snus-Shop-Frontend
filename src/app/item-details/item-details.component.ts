@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ItemService} from '../item.service';
 import {UserService} from '../user.service';
+import {User} from '../user';
+import {AuthenticationService} from "../authentication.service";
 
 @Component({
   selector: 'app-item-details',
@@ -12,18 +14,22 @@ import {UserService} from '../user.service';
 })
 export class ItemDetailsComponent implements OnInit {
 
+  user: User;
   item: Item;
   action: string = '';
   actionChanged: boolean = false;
 
   ratings = [1, 2, 3, 4, 5];
 
+
   constructor(private route: ActivatedRoute,
               private itemService: ItemService,
               private location: Location,
-              private userService: UserService) { }
+              private userService: UserService,
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.user = this.authenticationService.CurrentUserValue;
     this.getItem();
     this.action = 'Add to';
   }

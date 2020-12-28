@@ -17,7 +17,7 @@
     <button class="button" (click)="goBack()">Go Back</button>
   </div>
 
-  <div class="rating">
+  <div *ngIf="user !== null && user.role === 'USER'" class="rating">
     <label for="ratingChoose"><strong>Rate this snus:</strong></label>
     <select class="ratingBox" id="ratingChoose" name="ratingChoose" #ratingSelector>
       <option *ngFor="let rating of ratings" [value]="rating">{{rating}}</option>
