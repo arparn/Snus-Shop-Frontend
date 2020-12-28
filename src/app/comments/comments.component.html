@@ -10,7 +10,7 @@
     </ul>
   </div>
 
-  <div *ngIf="user !== null && user.role === 'USER'" class="leaveComment">
+  <div *ngIf="user !== null && (user.role === 'USER' || user.role === 'ADMIN')" class="leaveComment">
     <label><strong>Leave comment:</strong></label>
     <label>Your first name:
       <input #firstName/>

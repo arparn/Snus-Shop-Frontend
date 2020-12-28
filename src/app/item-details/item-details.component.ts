@@ -6,6 +6,7 @@ import { ItemService} from '../item.service';
 import {UserService} from '../user.service';
 import {User} from '../user';
 import {AuthenticationService} from "../authentication.service";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-item-details',
@@ -13,7 +14,8 @@ import {AuthenticationService} from "../authentication.service";
   styleUrls: ['./item-details.component.css']
 })
 export class ItemDetailsComponent implements OnInit {
-
+  adminPr;
+  adminDescriptionn;
   user: User;
   item: Item;
   action: string = '';
@@ -23,10 +25,18 @@ export class ItemDetailsComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
               private itemService: ItemService,
               private location: Location,
               private userService: UserService,
-              private authenticationService: AuthenticationService) { }
+              private authenticationService: AuthenticationService) {
+    this.adminDescriptionn = this.formBuilder.group({
+      adminDescription: ''
+    });
+    this.adminPr = this.formBuilder.group({
+      adminPri: ''
+    });
+  }
 
   ngOnInit(): void {
     this.user = this.authenticationService.CurrentUserValue;
@@ -66,5 +76,13 @@ export class ItemDetailsComponent implements OnInit {
 
   grade(rating: string, token: string): void{
     this.itemService.grade(this.item.id, Number(rating)).subscribe(grade => this.item.rating = grade);
+  }
+
+  sendNewPrice(price: number): void {
+    this.itemService.changePrice(this.item.id, price).subscribe();
+  }
+
+  sendDescription(text: string): void {
+    this.itemService.changeDescription(this.item.id, text).subscribe();
   }
 }

@@ -1,29 +1,42 @@
 <div class="itemDetails" *ngIf="item">
   <h2>Selected Snus: </h2>
-
   <div class="name">{{item.name}}</div>
-
   <img class="image" src="{{item.url}}" alt="{{item.name}}">
   <div class="info">
     <p class="description">Price: {{item.price}}</p>
     <p class="description">Rating: {{item.rating}}</p>
     <p class="description">Strength: {{item.strength}}</p>
     <p class="description">Description: {{item.description}}</p>
+  </div >
+  <div *ngIf="user !== null && user.role === 'ADMIN'" class="adminDes">
+    <form [formGroup]="adminDescriptionn" (ngSubmit)="sendDescription(adminDescriptionn.value)">
+      <label for="adminDescription">
+        Change description:
+      </label>
+      <input id="adminDescription" type="text" formControlName="adminDescription">
+      <button class="button" type="submit">Submit changes</button>
+    </form>
   </div>
-
+  <div *ngIf="user !== null && user.role === 'ADMIN'" class="adminPrice">
+    <form [formGroup]="adminPr" (ngSubmit)="sendNewPrice(adminPr.value)">
+      <label for="adminPri">
+        Change price:
+      </label>
+      <input id="adminPri" type="text" formControlName="adminPri">
+      <button class="button" type="submit" >Submit changes</button>
+    </form>
+  </div>
   <div class="buttons">
     <button class="button" (click)="addToShoppingCart()">Add to Shopping Cart</button>
     <button class="button" (click)="addToWishlist()">{{action}} WishList</button>
     <button class="button" (click)="goBack()">Go Back</button>
   </div>
-
-  <div *ngIf="user !== null && user.role === 'USER'" class="rating">
+  <div *ngIf="user !== null && (user.role === 'USER' || user.role === 'ADMIN')" class="rating">
     <label for="ratingChoose"><strong>Rate this snus:</strong></label>
     <select class="ratingBox" id="ratingChoose" name="ratingChoose" #ratingSelector>
       <option *ngFor="let rating of ratings" [value]="rating">{{rating}}</option>
     </select>
     <button class="ratingButton" (click)="grade(ratingSelector.value)">Rate Snus</button>
   </div>
-
   <app-comments></app-comments>
 </div>

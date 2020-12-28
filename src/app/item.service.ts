@@ -74,4 +74,14 @@ export class ItemService {
     const url = `${this.itemsUrl}/${id}/rating`;
     return this.http.post<number>(url, rating, this.httpOptions);
   }
+
+  changePrice(id: number, price: number): Observable<any> {
+    const url = `${this.itemsUrl}/${id}/price`;
+    return this.http.post(url, price, this.httpOptions);
+  }
+
+  changeDescription(id: number, text: string): Observable<any> {
+    const url = `${this.itemsUrl}/${id}/description`;
+    return this.http.post(url, text, this.httpOptions);
+  }
 }
