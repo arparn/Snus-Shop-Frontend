@@ -17,6 +17,9 @@
       </li>
     </ul>
   </div>
+  <div>
+    <button class="delete-button" (click)="deleteAll()">Clear shopping cart</button>
+  </div>
 
   <div class="purchase">
     <label class="lab">Your first name:
@@ -31,7 +34,12 @@
     <label class="lab">Zip Code:
       <input #zipCode/>
     </label><br>
-    <button class="purchaseButt" *ngIf="itemsToBuy != null && itemsToBuy.length > 0" (click)="deleteAll(); purchaseAlert.hidden = false; firstName.value=''; lastName.value=''; address.value=''; zipCode.value=''">Purchase</button>
-    <div class="alert" role="alert" [hidden]="true"#purchaseAlert>Your order is in process! We will contact you later:)</div>
+    <button class="purchaseButt" *ngIf="itemsToBuy != null && itemsToBuy.length > 0"
+            (click)="deleteAll(); purchaseAlert.hidden = false; firstName.value=''; lastName.value=''; address.value=''; zipCode.value=''">
+      Purchase
+    </button>
+    <div class="alert" role="alert" [hidden]="true" #purchaseAlert>Your order is in process! We will contact you
+      later:)
+    </div>
   </div>
 </div>

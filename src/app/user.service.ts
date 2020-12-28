@@ -13,32 +13,23 @@ import {Info} from './info';
 
 export class UserService {
   private userUrl = 'api///user';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   addToWishlist(id: number): Observable<Item> {
-  const obj = localStorage.getItem('currentUser');
-  const jsonObj = JSON.parse(obj);
-  const token = jsonObj.token;
-  return this.http.post<Item>(`api/wishlist`, {id, token} as Info, this.httpOptions);
+  return this.http.post<Item>(`api/wishlist`, id, this.httpOptions);
   }
 
   addToShoppingCart(id: number): Observable<Item> {
       const url = `api/cart`;
-      const obj = localStorage.getItem('currentUser');
-      const jsonObj = JSON.parse(obj);
-      const token = jsonObj.token;
-      return this.http.post<Item>(url, {id, token} as Info, this.httpOptions);
+      return this.http.post<Item>(url, id, this.httpOptions);
   }
 
   getShoppingCart(): Observable<ItemCount[]> {
-  const obj = localStorage.getItem('currentUser');
-  const jsonObj = JSON.parse(obj);
-  const token = jsonObj.token;
-  return this.http.post<ItemCount[]>(`api/cart/purchase`, token, this.httpOptions);
+  return this.http.get<ItemCount[]>(`api/cart`);
   }
 
   getWishlist(): Observable<Item[]> {
@@ -52,7 +43,7 @@ export class UserService {
   }
 
   deleteFromWishList(id: number): Observable<Item[]> {
-    const url = `api/wishlist/${id}/wish-list`;
+    const url = `api/wishlist/${id}`;
     return this.http.delete<Item[]>(url, this.httpOptions);
   }
 

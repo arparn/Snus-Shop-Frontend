@@ -28,7 +28,7 @@ import {ErrorInterceptor} from './helper/error.interceptor';
     WishlistComponent,
     ShoppingCartComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     FormsModule,
