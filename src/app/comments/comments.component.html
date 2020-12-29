@@ -5,12 +5,12 @@
       <li class="commentBody" *ngFor="let comment of comments">
         {{comment.firstName}}:<br>{{comment.comment}}
         <p class="time">{{comment.time}}</p>
-        <button *ngIf="user !== null && user.role === 'ADMIN'" class="leaveComBtn" title="delete comment">x</button>
+        <button *ngIf="user !== null && user.role === 'ADMIN'" class="leaveComBtn" (click)="deleteComment(comment.id)">x</button>
       </li>
     </ul>
   </div>
 
-  <div *ngIf="user !== null && user.role === 'USER'" class="leaveComment">
+  <div *ngIf="user !== null && (user.role === 'USER' || user.role === 'ADMIN')" class="leaveComment">
     <label><strong>Leave comment:</strong></label>
     <label>Your first name:
       <input #firstName/>

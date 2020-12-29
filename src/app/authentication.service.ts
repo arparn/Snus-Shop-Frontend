@@ -7,6 +7,7 @@ import {map} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthenticationService {
 
   private currentUserSubject: BehaviorSubject<User>;
@@ -36,6 +37,7 @@ export class AuthenticationService {
   logout() {
     // remove user from local storage and set current user to null
     localStorage.removeItem('currentUser');
+    location.reload(true);
     this.currentUserSubject.next(null);
   }
 

@@ -1,29 +1,38 @@
 <div class="itemDetails" *ngIf="item">
   <h2>Selected Snus: </h2>
-
   <div class="name">{{item.name}}</div>
-
   <img class="image" src="{{item.url}}" alt="{{item.name}}">
   <div class="info">
     <p class="description">Price: {{item.price}}</p>
     <p class="description">Rating: {{item.rating}}</p>
     <p class="description">Strength: {{item.strength}}</p>
     <p class="description">Description: {{item.description}}</p>
+  </div >
+  <div *ngIf="user !== null && user.role === 'ADMIN'" class="adminDes">
+      <label for="adminDescription">
+        Change description:
+      </label>
+      <input id="adminDescription" type="text" #adminDescr>
+      <button class="button" type="submit" (click)="sendDescription(adminDescr.value)">Submit changes</button>
   </div>
-
-  <div class="buttons">
+  <div *ngIf="user !== null && user.role === 'ADMIN'" class="adminPrice">
+      <label for="adminPri">
+        Change price:
+      </label>
+      <input id="adminPri" type="text" #adminPric>
+      <button class="button" type="submit" (click)="sendNewPrice(adminPric.value)">Submit changes</button>
+  </div>
+  <div *ngIf="user !== null && (user.role === 'USER' || user.role === 'ADMIN')" class="buttons">
     <button class="button" (click)="addToShoppingCart()">Add to Shopping Cart</button>
     <button class="button" (click)="addToWishlist()">{{action}} WishList</button>
     <button class="button" (click)="goBack()">Go Back</button>
   </div>
-
-  <div class="rating">
+  <div *ngIf="user !== null && (user.role === 'USER' || user.role === 'ADMIN')" class="rating">
     <label for="ratingChoose"><strong>Rate this snus:</strong></label>
     <select class="ratingBox" id="ratingChoose" name="ratingChoose" #ratingSelector>
       <option *ngFor="let rating of ratings" [value]="rating">{{rating}}</option>
     </select>
     <button class="ratingButton" (click)="grade(ratingSelector.value)">Rate Snus</button>
   </div>
-
   <app-comments></app-comments>
 </div>

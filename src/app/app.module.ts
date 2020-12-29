@@ -13,8 +13,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import {JwtInterceptor} from "./helper/jwt.interceptor";
-import {ErrorInterceptor} from "./helper/error.interceptor";
+import {JwtInterceptor} from './helper/jwt.interceptor';
+import {ErrorInterceptor} from './helper/error.interceptor';
 
 
 @NgModule({
@@ -28,7 +28,7 @@ import {ErrorInterceptor} from "./helper/error.interceptor";
     WishlistComponent,
     ShoppingCartComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     FormsModule,
