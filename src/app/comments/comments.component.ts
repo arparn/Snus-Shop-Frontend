@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Comment } from './comment';
 import {AuthenticationService} from "../authentication.service";
 import {User} from "../user";
-import {Info} from "../info";
 
 @Component({
   selector: 'app-comments',
@@ -13,7 +12,6 @@ import {Info} from "../info";
 })
 export class CommentsComponent implements OnInit {
 
-  info: Info;
   comments: Comment[];
   user: User;
 
