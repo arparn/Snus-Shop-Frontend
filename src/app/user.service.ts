@@ -12,7 +12,7 @@ import {Info} from './info';
 })
 
 export class UserService {
-  private userUrl = 'api///user';
+  private userUrl = 'api/user';
   constructor(private http: HttpClient) {}
 
   httpOptions = {
@@ -53,10 +53,10 @@ export class UserService {
   }
 
   register(userPassword: UserPassword): Observable<any> {
-    return this.http.post<UserPassword>(`${this.userUrl}/register`, userPassword, this.httpOptions);
+    return this.http.post<UserPassword>(`${this.userUrl}/reg`, userPassword, this.httpOptions);
   }
 
   login(userPassword: UserPassword): Observable<User> {
-    return this.http.post<User>(`${this.userUrl}/login`, userPassword, this.httpOptions);
+    return this.http.post<User>(`${this.userUrl}/log`, userPassword, this.httpOptions);
   }
 }

@@ -1,11 +1,14 @@
 <div class="comments">
+  <div *ngIf="user === null">
+    <p>To leave commentaries, grade and purchase our snus please <a routerLink="/login"> do login </a> or <a routerLink="/register"> register </a></p>
+  </div>
   <p><strong>COMMENTS:</strong></p>
   <div>
     <ul class="commentsSection">
       <li class="commentBody" *ngFor="let comment of comments">
         {{comment.firstName}}:<br>{{comment.comment}}
         <p class="time">{{comment.time}}</p>
-        <button *ngIf="user !== null && user.role === 'ADMIN'" class="leaveComBtn" (click)="deleteComment(comment.id)">x</button>
+        <button *ngIf="user !== null && user.role === 'ADMIN'" class="leaveComBtn" (click)="deleteComment(comment.id)">Delete</button>
       </li>
     </ul>
   </div>
