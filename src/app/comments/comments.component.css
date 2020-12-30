@@ -43,3 +43,13 @@
 .time {
   align-self: flex-end;
 }
+
+a {
+  text-decoration: none;
+  color: cornflowerblue;
+}
+
+a:hover{
+  text-decoration: none;
+  color: black;
+}
