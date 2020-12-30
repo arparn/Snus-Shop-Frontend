@@ -26,16 +26,13 @@ export class AuthenticationService {
   login(userPassword): Observable<User> {
     return this.userService.login(userPassword)
       .pipe(map((user: User) => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
         return user;
       }));
   }
 
-  // tslint:disable-next-line:typedef
   logout() {
-    // remove user from local storage and set current user to null
     localStorage.removeItem('currentUser');
     location.reload(true);
     this.currentUserSubject.next(null);

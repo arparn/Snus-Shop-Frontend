@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
 import { Item } from '../items/item';
-import {AuthenticationService} from '../authentication.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -10,8 +9,7 @@ import {AuthenticationService} from '../authentication.service';
 })
 export class WishlistComponent implements OnInit {
 
-  constructor(private userService: UserService,
-              private auth: AuthenticationService) { }
+  constructor(private userService: UserService) { }
 
   itemsToRemember: Item[];
 

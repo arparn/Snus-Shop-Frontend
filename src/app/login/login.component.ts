@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder} from "@angular/forms";
-import {UserService} from "../user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {first} from "rxjs/operators";
 import {AuthenticationService} from "../authentication.service";
@@ -31,16 +30,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  // tslint:disable-next-line:typedef
   onSubmit(userPassword) {
-    // Process checkout data here
-    console.log(userPassword);
-    // sendToBACKENDDDDDD
     this.authenticationService.login(userPassword)
       .pipe(first())
       .subscribe(
         (user) => {
-          console.log('user: ', user);
           this.router.navigate([this.returnUrl]).then(r => location.href = '/dashboard');
         },
         error => {

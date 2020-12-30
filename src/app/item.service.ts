@@ -10,7 +10,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class ItemService {
 
-  private itemsUrl = 'api/items';  // URL to web api
+  private itemsUrl = 'api/items';
 
 
   httpOptions = {
@@ -29,10 +29,9 @@ export class ItemService {
     return this.http.get<Item>(url);
   }
 
-  /* GET items whose name contains search term */
   searchItems(term: string): Observable<Item[]> {
     if (!term.trim()) {
-      return of([]);  // if not search term, return empty item array.
+      return of([]);
     }
     return this.http.get<Item[]>(`${this.itemsUrl}/?query=${term}`);
   }

@@ -6,8 +6,8 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {AuthenticationService} from "../authentication.service";
-import {catchError} from "rxjs/operators";
+import {AuthenticationService} from '../authentication.service';
+import {catchError} from 'rxjs/operators';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -18,11 +18,9 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(catchError(err => {
       if (err.status === 401) {
         this.authenticationService.logout();
-        //location.reload(true);
       }
       if (err.status === 500) {
         this.authenticationService.logout();
-        //location.reload(true);
       }
       const error = err.error.message || err.statusText;
       return throwError(error);

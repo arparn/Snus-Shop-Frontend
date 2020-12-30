@@ -6,6 +6,7 @@ import {AuthenticationService} from '../authentication.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
@@ -19,11 +20,9 @@ export class AuthGuard implements CanActivate {
     const currentUser = this.authenticationService.CurrentUserValue;
     console.log('current user: ', currentUser);
     if (currentUser && currentUser.token) {
-      // authorised so return true
       return true;
     }
 
-    // not logged in so redirect to login page with the return url
     this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
     return false;
   }

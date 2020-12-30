@@ -23,16 +23,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line:typedef
   onSubmit(userPassword) {
-    // Process checkout data here
-    console.log(userPassword);
-    // sendToBACKENDDDDDD
     this.userService.register(userPassword)
       .pipe(first())
       .subscribe(
         () => {
-          console.log('reg suc');
           this.router.navigate(['/login']);
         },
         error => {
