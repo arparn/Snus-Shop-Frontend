@@ -52,6 +52,9 @@
                 <li *ngIf="user === null" class="nav-item">
                   <a class="nav-link js-scroll-trigger text-whitee-51" style="font-weight: 500;" routerLink="/register">Register</a>
                 </li>
+                <li>
+                  <a class="nav-link js-scroll-trigger text-whitee-51" style="font-weight: 500;" routerLink="/contact">Contact Us</a>
+                </li>
                 <li *ngIf="user !== null && (user.role === 'USER' || user.role === 'ADMIN')" style="padding-top: 5px" class="nav-item">
                   <button class="nav-link js-scroll-trigger text-whitee-51" style="font-weight: 500;" (click)="authenticationService.logout()">Logout</button>
                 </li>

@@ -15,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import {JwtInterceptor} from './helper/jwt.interceptor';
 import {ErrorInterceptor} from './helper/error.interceptor';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {ErrorInterceptor} from './helper/error.interceptor';
     ShoppingCartComponent,
     RegisterComponent,
     LoginComponent,
+    AboutUsComponent,
   ],
   imports: [
     FormsModule,
