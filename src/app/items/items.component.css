@@ -51,8 +51,11 @@
 }
 
 .filters {
+	border:5px #2F4F4F solid;
+
   margin-left: 8px;
   width: 400px;
+  height: 260px
 }
 
 .goods {
