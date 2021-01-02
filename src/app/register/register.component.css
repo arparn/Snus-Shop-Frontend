@@ -1,0 +1,27 @@
+div {
+  padding-top: 120px
+}
+
+.register {
+	height:230px;
+	width:330px;
+	margin:auto;
+	border:5px #2F4F4F solid;
+	padding:10px;
+
+}
+
+input {
+	padding:5px;
+	margin:5px
+ }
+
+label {
+  padding:5px;
+  margin:5px
+}
+
+button {
+  padding:5px;
+  margin:5px;
+}

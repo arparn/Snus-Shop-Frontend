@@ -1,18 +1,16 @@
-<h1 style="padding-top: 50px; padding-left: 20px">Login</h1>
-<div style="padding-top: 70px; padding-left: 20px">
+<div>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
-    <div>
+    <div class="login">
+      <h1>Login</h1>
       <label for="username">
         Name
       </label>
       <input id="username" type="text" formControlName="username">
-    </div>
-    <div>
       <label for="password">
         Password
       </label>
       <input id="password" type="password" formControlName="password">
+      <button class="button" type="submit">Login</button>
     </div>
-    <button class="button" type="submit">login</button>
   </form>
 </div>
